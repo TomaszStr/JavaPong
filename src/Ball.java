@@ -32,8 +32,8 @@ public class Ball {
         timesBounced = 0;
     }
     void move(){
-        px += (int)(dx*speed*(1+(double)timesBounced/20));
-        py += (int)(dy*speed*(1+(double)timesBounced/20));
+        px += (int)(dx*speed*(1+(double)timesBounced/40));
+        py += (int)(dy*speed*(1+(double)timesBounced/40));
     }
     void bounceX(){
         dx *= -1;

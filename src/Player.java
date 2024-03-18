@@ -7,6 +7,8 @@ public class Player implements KeyListener {
 
     Block block;
     int yBorder;
+
+    boolean pause = false;
     Player(int x, int y){
         block = new Block(x-50,y/2,10,1,color);
         yBorder = y;
@@ -42,6 +44,10 @@ public class Player implements KeyListener {
                 break;
             case KeyEvent.VK_S, KeyEvent.VK_DOWN:
                 tryDown();
+                break;
+            case KeyEvent.VK_P:
+                System.out.println("pause");
+                pause = !pause;
                 break;
         }
     }

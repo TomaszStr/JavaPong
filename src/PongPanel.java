@@ -17,8 +17,6 @@ public class PongPanel extends JPanel {
     Rectangle border;
     int playerPoints;
     int botPoints;
-    static boolean pause=false;
-    static boolean interrupt=false;
 
 
     PongPanel(Dimension dimension){
@@ -43,6 +41,10 @@ public class PongPanel extends JPanel {
         displayScore(g);
         Graphics2D g2d = (Graphics2D)g;
         g2d.draw(border);
+        g2d.drawString("PRESS 'P' TO PAUSE",xBorder/2,20);
+        if(player.pause){
+            g2d.drawString("PAUSE",xBorder/2,yBorder/2);
+        }
     }
 
     void displayScore(Graphics g){
@@ -61,29 +63,29 @@ public class PongPanel extends JPanel {
         @Override
         public void run() {
             for(int i = 0; !this.isInterrupted() ; i++){
-//                if(interrupt)
-//                    break;
-                if(pause)
-                    try {
-                        sleep(1000);
-                    } catch (Exception e){}
 
                 repaint();
 
-                ball.move();
-                ball.checkContact(player.block);
-                ball.checkContact(bot.block);
-                ball.checkY(yBorder);
-                //possible change of score
-                checkScore(ball.checkX(xBorder));
+                if(player.pause)
+                    try {
+                        sleep(1000);
+                    } catch (Exception e){e.printStackTrace();}
+                else {
+                    ball.move();
+                    ball.checkContact(player.block);
+                    ball.checkContact(bot.block);
+                    ball.checkY(yBorder);
+                    //possible change of score
+                    checkScore(ball.checkX(xBorder));
 
-                bot.makeMove(ball.py);
+                    bot.makeMove(ball.py);
 
-                try {
-                    sleep(1000 / 40);
-                } catch (InterruptedException e) {
-                    this.interrupt();
-                    e.printStackTrace();
+                    try {
+                        sleep(1000 / 40);
+                    } catch (InterruptedException e) {
+                        this.interrupt();
+                        e.printStackTrace();
+                    }
                 }
             }
         }
