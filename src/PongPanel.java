@@ -45,6 +45,9 @@ public class PongPanel extends JPanel {
         if(player.pause){
             g2d.drawString("PAUSE",xBorder/2,yBorder/2);
         }
+        if(game.gameOver){
+            displayResult(g2d);
+        }
     }
 
     void displayScore(Graphics g){
@@ -53,20 +56,38 @@ public class PongPanel extends JPanel {
         g.drawString("BOT:   "+botPoints,30,50);
         g.drawString("BOUNCED: "+ball.timesBounced,30,60);
     }
+
+    void displayResult(Graphics g){
+        if(botPoints > playerPoints){
+            g.drawString("BOT HAS WON!",xBorder/2,yBorder/2);
+        }
+        else {
+            g.drawString("PLAYER HAS WON, CONGRATS!!!",xBorder/2,yBorder/2);
+        }
+    }
     void checkScore(int s){
         if(s == 1)
             playerPoints++;
         else if(s == -1)
             botPoints++;
+
+        if(playerPoints > 4 || botPoints > 4)
+            game.gameOver = true;
     }
     public class Game extends Thread{
+
+        boolean gameOver = false;
         @Override
         public void run() {
             for(int i = 0; !this.isInterrupted() ; i++){
 
                 repaint();
-
-                if(player.pause)
+                if(gameOver){
+                    try {
+                        sleep(1000);
+                    } catch (Exception e){e.printStackTrace();}
+                }
+                else if(player.pause)
                     try {
                         sleep(1000);
                     } catch (Exception e){e.printStackTrace();}
