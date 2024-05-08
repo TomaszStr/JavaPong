@@ -10,7 +10,7 @@ This is a simple 2D Pong game implemented in Java using Swing for graphics and t
 
 ## Requirements
 
-- Java Development Kit (JDK) 8 or higher
+- Java Development Kit
 - Java Swing library
 
 ## Installation
@@ -19,7 +19,9 @@ This is a simple 2D Pong game implemented in Java using Swing for graphics and t
 
 git clone https://github.com/yourusername/java-pong.git
 
-2. Use Main() method to start game.
+2. Open project folder in IDE e.g. IntelliJ
+
+3. Use Main() method to start game.
 
 
 ## Screenshots
