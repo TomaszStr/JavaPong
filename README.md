@@ -17,7 +17,7 @@ This is a simple 2D Pong game implemented in Java using Swing for graphics and t
 
 1. Clone the repository:
 
-git clone https://github.com/yourusername/java-pong.git
+git clone https://github.com/TomaszStr/JavaPong.git
 
 2. Open project folder in IDE e.g. IntelliJ
 
