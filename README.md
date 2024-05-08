@@ -7,7 +7,6 @@ This is a simple 2D Pong game implemented in Java using Swing for graphics and t
 - Classic Pong gameplay
 - Player vs Computer mode
 - Simple and intuitive controls (arrow keys of WSAD)
-- Statistics stored locally (csv file)
 
 ## Requirements
 
